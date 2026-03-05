@@ -679,7 +679,7 @@ elif step == 4:
             with st.expander(f"🗺 Cluster Visualisation — {best_cr['Model']} (PCA 2D)"):
                 feat_cols_all=[c for c in df_proc.columns if c!=target]
                 Xall=scaler.transform(df_proc[feat_cols_all].values)
-                pca_vis=PCA(n_components=2); X2d=pca_vis.fit_transform(Xall)
+                n_vis=min(2, Xall.shape[1], Xall.shape[0]); pca_vis=PCA(n_components=n_vis); X2d=pca_vis.fit_transform(Xall)
                 lbl=best_cr['_labels']
                 fig,ax=dark_fig(7,5)
                 scatter_colors=['#00c896','#0078ff','#a855f7','#f59e0b','#ef4444','#06b6d4','#84cc16','#f43f5e']
