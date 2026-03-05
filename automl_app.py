@@ -694,7 +694,7 @@ elif step == 4:
 
             # Elbow chart for K-Means
             with st.expander("📐 K-Means Elbow Chart"):
-                inertias=[]; ks=range(2,min(11,len(X_sc)//5+2))
+                inertias=[]; Xall2=scaler.transform(df_proc[[c for c in df_proc.columns if c!=target]].values); ks=range(2,min(11,len(Xall2)//5+2))
                 Xall2=scaler.transform(df_proc[[c for c in df_proc.columns if c!=target]].values)
                 for k in ks:
                     km=KMeans(n_clusters=k,random_state=42,n_init=10); km.fit(Xall2)
